@@ -1,3 +1,7 @@
+" Minimum needed for netrw and probably some other stuff
+set nocompatible
+filetype plugin on
+
 " Create convenient mappings for window switching
 nnoremap <C-Left> <C-w>h
 nnoremap <C-Down> <C-w>j
@@ -12,10 +16,8 @@ set background=dark
 " I don't know, but I guess it's worth a try
 set hidden
 
-"noremap <silent> [b :bprevious<CR>
-"noremap <silent> ]b :bnext<CR>
-"noremap <silent> [B :bfirst<CR>
-"noremap <silent> ]B :blast<CR>
+" Expand to active buffer directory with %%
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " ~ ~ ~ ~ Plugins ~ ~ ~ ~"
 "
