@@ -1,4 +1,4 @@
-# vim-settings
+# vim
 
 Just a compilation of files and information on my personal vim configuration for reference.
 
@@ -14,4 +14,4 @@ endif
 
 Doing this will allow for ftplugin indent config to go through.
 
-Finally, copy `ftplugin` into the `~/.vim` folder.
+  2. Install `vim-plug`: https://github.com/junegunn/vim-plug

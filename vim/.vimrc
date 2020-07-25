@@ -26,8 +26,17 @@ call plug#begin('~/.vim/plugged')
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'mileszs/ack.vim'
 
 call plug#end()
+
+" fzf mappings
+nnoremap <C-p> :<C-u>FZF<CR>
+
+" ack.vim settings
+let g:ackprg = 'ag --vimgrep'
 
 " vim-tmux-navigator mappings
 let g:tmux_navigator_no_mappings = 1
