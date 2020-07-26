@@ -10,6 +10,7 @@ nnoremap <C-Right> <C-w>l
 
 " For whatever reason, tmux needs this
 set background=dark
+set fileencodings+=sjis
 
 " Convenient for :argdo, and I guess this kind of behavior is fine.
 " Will we break something? Are we running into a wall by doing this?
@@ -18,6 +19,18 @@ set hidden
 
 " Expand to active buffer directory with %%
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Custom leader mappings (follow the leader, beep beep)
+" fzf
+nmap <Leader>\ :Buffers<CR>
+nmap <Leader>f :Files<CR>
+" ack
+nmap <Leader>s :Ack! 
+nmap <Leader>S :Ack! "\b<cword>\b" <CR>
+" Consider x as alternative to close
+nmap <Leader>q :cclose<CR> 
+" Consider x as alternative for search, as close (like z)
+"nmap <Leader>z :Files<CR>
 
 " ~ ~ ~ ~ Plugins ~ ~ ~ ~"
 "
@@ -29,6 +42,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
+Plug 'arcticicestudio/nord-vim'
 
 call plug#end()
 
