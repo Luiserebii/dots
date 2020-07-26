@@ -10,6 +10,9 @@ nnoremap <C-Right> <C-w>l
 
 " For whatever reason, tmux needs this
 set background=dark
+
+" blorp will this really not cause a need to :bufdo e ++enc=sjis %???
+" ... probably not, but screw it
 set fileencodings+=sjis
 
 " Convenient for :argdo, and I guess this kind of behavior is fine.
@@ -19,6 +22,9 @@ set hidden
 
 " Expand to active buffer directory with %%
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" Set equalprg to clang-format for `=` operator so we can get fun time format
+autocmd FileType c,cpp setlocal equalprg=clang-format
 
 " Custom leader mappings (follow the leader, beep beep)
 " fzf
@@ -42,7 +48,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim'
-Plug 'arcticicestudio/nord-vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire'
 
 call plug#end()
 
