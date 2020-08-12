@@ -28,8 +28,12 @@ autocmd FileType c,cpp setlocal equalprg=clang-format
 
 " Custom leader mappings (follow the leader, beep beep)
 " fzf
-nmap <Leader>\ :Buffers<CR>
-nmap <Leader>f :Files<CR>
+" Current change: not convinced that fzf through buffers is very common yet. 
+" Looking through files seems more so, so make it so. 
+"
+" If it's really useful... we have <Leader>b for now.
+nmap <Leader><Leader> :Files<CR>
+nmap <Leader>b :Buffers<CR>
 " ack
 nmap <Leader>s :Ack! 
 nmap <Leader>S :Ack! "\b<cword>\b" <CR>
