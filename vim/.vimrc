@@ -41,6 +41,8 @@ nmap <Leader>S :Ack! "\b<cword>\b" <CR>
 nmap <Leader>q :cclose<CR> 
 " Consider x as alternative for search, as close (like z)
 "nmap <Leader>z :Files<CR>
+" Quick reload command, nice for testing changes
+nmap <Leader>r :source ~/.vimrc<CR>
 
 " ~ ~ ~ ~ Plugins ~ ~ ~ ~"
 "
@@ -66,6 +68,35 @@ let g:ackprg = 'ag --vimgrep'
 
 " vim-tmux-navigator mappings
 let g:tmux_navigator_no_mappings = 1
+
+" coc.nvim mappings
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" K is nice, but \w is a little more convenient to hit; let's use both
+" to show documentation for now
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+nmap <silent> \w :call <SID>show_documentation()<CR>
+" Toggle CoC (enable if disabled, and vice versa)
+nmap \c :call <SID>coc_toggle()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Custom function to toggle CoC
+function! s:coc_toggle()
+  if get(g:, 'coc_enabled', 0) == 1
+    execute "CocDisable"
+  else
+    execute "CocEnable"
+  endif
+endfunction
 
 nnoremap <silent> <C-Left> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-Down> :TmuxNavigateDown<cr>
